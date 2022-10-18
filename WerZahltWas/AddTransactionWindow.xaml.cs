@@ -523,7 +523,7 @@ namespace WerZahltWas
             }
             else
             {
-                if (bezahlterComboBox.SelectedValue != null && beguenstigter1.SelectedValue != null && float.TryParse(gesamtBetragTextBox.Text, out gesamt))
+                if (bezahlterComboBox.SelectedValue != null && beguenstigter1.SelectedValue != null && float.TryParse(gesamtBetragTextBox.Text, out gesamt) && gesamt > 0)
                 {
                     check[2] = ((int)beguenstigter1.SelectedValue);
                     if(beguenstigter2.Visibility == Visibility.Visible && beguenstigter2.SelectedValue != null)
