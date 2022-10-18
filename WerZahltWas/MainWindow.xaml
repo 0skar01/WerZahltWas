@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WerBezahltWas"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1000">
+        Title="MainWindow" Height="700" Width="1000" ResizeMode="NoResize" Closed="CloseProgram">
     <Grid Background="#FF5F5E5E">
         <Label Content="Users" HorizontalAlignment="Left" Margin="118,50,0,0" VerticalAlignment="Top" Height="34" Width="76" FontWeight="Bold" FontSize="24" FontFamily="Baskerville Old Face"/>
         <ListBox x:Name="usersListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="64,102,752,238" BorderThickness="5,1,1,5" Foreground="#FFF3F3F9" FontSize="22" SelectionChanged="SelectUser">

@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WerBezahltWas;
 using WerZahltWas.Classen;
 
 namespace WerZahltWas
@@ -30,7 +31,6 @@ namespace WerZahltWas
             ShowSchulden();
             ShowUsers();
         }
-
         private void ShowSchulden(string userId = null)
         {
             if(userId == null)
@@ -79,16 +79,17 @@ namespace WerZahltWas
                 usersListBox.ItemsSource = usersTable.DefaultView;
             }
         }
-
         private void WerZahltWasUser(object sender, SelectionChangedEventArgs e)
         {
             ShowSchulden(usersListBox.SelectedValue.ToString());
         }
-
         private void OpenMainWindow(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-            Application.Current.Shutdown();
+            //System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            //Application.Current.Shutdown();
+            MainWindow mainWindow = new MainWindow();
+            this.Hide();
+            mainWindow.ShowDialog();
         }
     }
 }

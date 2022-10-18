@@ -27,3 +27,10 @@ C:\Users\w_askar\Desktop\C#\WerZahltWas\obj\Debug\AddTransactionWindow.g.cs
 C:\Users\w_askar\Desktop\C#\WerZahltWas\obj\Debug\AddTransactionWindow.baml
 C:\Users\w_askar\Desktop\C#\WerZahltWas\obj\Debug\WerZahltWasWindow.g.cs
 C:\Users\w_askar\Desktop\C#\WerZahltWas\obj\Debug\WerZahltWasWindow.baml
+C:\Users\w_askar\Desktop\C#\WerZahltWas\obj\Debug\Rechner.g.cs
+C:\Users\w_askar\Desktop\C#\WerZahltWas\obj\Debug\WerZahltWas_Content.g.cs
+C:\Users\w_askar\Desktop\C#\WerZahltWas\obj\Debug\Rechner.baml
+C:\Users\w_askar\Desktop\C#\WerZahltWas\bin\Debug\WerZahltWas.exe.manifest
+C:\Users\w_askar\Desktop\C#\WerZahltWas\bin\Debug\WerZahltWas.application
+C:\Users\w_askar\Desktop\C#\WerZahltWas\obj\Debug\WerZahltWas.exe.manifest
+C:\Users\w_askar\Desktop\C#\WerZahltWas\obj\Debug\WerZahltWas.application

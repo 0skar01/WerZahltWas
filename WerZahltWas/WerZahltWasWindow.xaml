@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WerZahltWas"
         mc:Ignorable="d"
-        Title="WerZahltWasWindow" Height="500" Width="600" Closing="OpenMainWindow">
+        Title="WerZahltWasWindow" Height="500" Width="600" Closing="OpenMainWindow" ResizeMode="NoResize">
     <Grid Background="#FF5F5E5E">
         <ListBox x:Name="WerZahltWasListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="248,109,52,54" FontSize="16" FontStyle="Italic" Foreground="#FFFBF9F9">
             <ListBox.Background>

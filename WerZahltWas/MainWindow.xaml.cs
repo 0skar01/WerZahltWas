@@ -34,39 +34,56 @@ namespace WerBezahltWas
         }
         private void ShowLastTransactions(string userId = null)
         {
-            if(userId == null)
+            string query = (userId == null) ? "Get_Transactions" : "Get_User_Transactions";
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            if(userId != null)
             {
-                string query = "Get_Transactions";
-                SqlDataAdapter adapter = new SqlDataAdapter(query, con);
-                adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                using (adapter)
-                {
-                    DataTable usersTable = new DataTable();
-                    adapter.Fill(usersTable);
-                    transactionInfoListBox.ItemsSource = "";
-                    TransactionsListBox.ItemsSource = "";
-                    TransactionsListBox.DisplayMemberPath = "Transactions";
-                    TransactionsListBox.SelectedValuePath = "Id";
-                    TransactionsListBox.ItemsSource = usersTable.DefaultView;
-                }
-            }
-            else
-            {
-                string query = "Get_User_Transactions";
-                SqlDataAdapter adapter = new SqlDataAdapter(query, con);
-                adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
                 adapter.SelectCommand.Parameters.AddWithValue("@userId", userId);
-                using (adapter)
-                {
-                    DataTable usersTable = new DataTable();
-                    adapter.Fill(usersTable);
-                    transactionInfoListBox.ItemsSource = "";
-                    TransactionsListBox.ItemsSource = "";
-                    TransactionsListBox.DisplayMemberPath = "Transactions";
-                    TransactionsListBox.SelectedValuePath = "Id";
-                    TransactionsListBox.ItemsSource = usersTable.DefaultView;
-                }
             }
+            using (adapter)
+            {
+                DataTable usersTable = new DataTable();
+                adapter.Fill(usersTable);
+                transactionInfoListBox.ItemsSource = "";
+                TransactionsListBox.ItemsSource = "";
+                TransactionsListBox.DisplayMemberPath = "Transactions";
+                TransactionsListBox.SelectedValuePath = "Id";
+                TransactionsListBox.ItemsSource = usersTable.DefaultView;
+            }
+            //if (userId == null)
+            //{
+            //    string query = "Get_Transactions";
+            //    SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            //    adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            //    using (adapter)
+            //    {
+            //        DataTable usersTable = new DataTable();
+            //        adapter.Fill(usersTable);
+            //        transactionInfoListBox.ItemsSource = "";
+            //        TransactionsListBox.ItemsSource = "";
+            //        TransactionsListBox.DisplayMemberPath = "Transactions";
+            //        TransactionsListBox.SelectedValuePath = "Id";
+            //        TransactionsListBox.ItemsSource = usersTable.DefaultView;
+            //    }
+            //}
+            //else
+            //{
+            //    string query = "Get_User_Transactions";
+            //    SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            //    adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            //    adapter.SelectCommand.Parameters.AddWithValue("@userId", userId);
+            //    using (adapter)
+            //    {
+            //        DataTable usersTable = new DataTable();
+            //        adapter.Fill(usersTable);
+            //        transactionInfoListBox.ItemsSource = "";
+            //        TransactionsListBox.ItemsSource = "";
+            //        TransactionsListBox.DisplayMemberPath = "Transactions";
+            //        TransactionsListBox.SelectedValuePath = "Id";
+            //        TransactionsListBox.ItemsSource = usersTable.DefaultView;
+            //    }
+            //}
         }
         private void ShowUsers()
         {
@@ -84,14 +101,17 @@ namespace WerBezahltWas
         }
         private void AddUserButton_Click(object sender, RoutedEventArgs e)
         {
-            SqlCommand cmd = new SqlCommand("Add_User", con);
-            using (cmd)
+            if(AddUserTextBox.Text.Trim() != "")
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                con.Open();
-                cmd.Parameters.AddWithValue("@name", AddUserTextBox.Text);
-                cmd.ExecuteNonQuery();
-                con.Close();
+                SqlCommand cmd = new SqlCommand("Add_User", con);
+                using (cmd)
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    con.Open();
+                    cmd.Parameters.AddWithValue("@name", AddUserTextBox.Text);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
             }
             AddUserTextBox.Text = "";
             ShowUsers();
@@ -111,9 +131,8 @@ namespace WerBezahltWas
         {
             WerZahltWas.AddTransactionWindow win = new WerZahltWas.AddTransactionWindow();
             win.Show();
-            this.Close();
+            this.Hide();
         }
-
         private void ShowTransactionInfo(object sender, SelectionChangedEventArgs e)
         {
             if(TransactionsListBox.SelectedValue != null)
@@ -133,12 +152,15 @@ namespace WerBezahltWas
                 }
             }
         }
-
         private void WerZahltWas(object sender, RoutedEventArgs e)
         {
             WerZahltWas.WerZahltWasWindow win = new WerZahltWas.WerZahltWasWindow();
             win.Show();
-            this.Close();
+            this.Hide();
+        }
+        private void CloseProgram(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

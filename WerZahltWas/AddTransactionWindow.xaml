@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WerZahltWas"
         mc:Ignorable="d"
-        Title="AddTransactionWindow" Height="670" Width="410" Closing="OpenMainWindow">
+        Title="AddTransactionWindow" Height="670" Width="410" ResizeMode="NoResize" Closing="OpenMainWindow">
     <Grid Background="#FF484848">
         <ComboBox x:Name="bezahlterComboBox" HorizontalAlignment="Left" Margin="112,58,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ShowBeguenstigter" Foreground="#FF484848" Background="#FF484848" BorderBrush="#FF484848"/>
         <Label Content="Bezahler" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White"/>

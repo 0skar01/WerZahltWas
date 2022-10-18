@@ -62,6 +62,7 @@ namespace WerZahltWas
                 if (beguenstigter8.Visibility == Visibility.Visible) anteilBetragTextBox8.Visibility = Visibility.Visible;
                 anteilBetragLabel.Visibility = Visibility.Visible;
             }
+            
         }
         private void SchowAnteilBetrag(object sender, RoutedEventArgs e)
         {
@@ -92,8 +93,8 @@ namespace WerZahltWas
                 (list.Count == 5) ? $"select * from Person where Id != {list[0]} And Id != {list[1]} And Id != {list[2]} And Id != {list[3]} And Id != {list[4]}" :
                 (list.Count == 6) ? $"select * from Person where Id != {list[0]} And Id != {list[1]} And Id != {list[2]} And Id != {list[3]} And Id != {list[4]} And Id != {list[5]}" :
                 (list.Count == 7) ? $"select * from Person where Id != {list[0]} And Id != {list[1]} And Id != {list[2]} And Id != {list[3]} And Id != {list[4]} And Id != {list[5]} And Id != {list[6]}" :
-                (list.Count == 8) ? $"select * from Person where Id != {list[0]} And Id != {list[1]} And Id != {list[2]} And Id != {list[3]} And Id != {list[4]} And Id != {list[5]} And Id != {list[6]}  And Id != {list[7]}":
-                (list.Count == 9) ? $"select * from Person where Id != {list[0]} And Id != {list[1]} And Id != {list[2]} And Id != {list[3]} And Id != {list[4]} And Id != {list[5]} And Id != {list[6]}  And Id != {list[7]} And Id != { list[8]}":"";
+                (list.Count == 8) ? $"select * from Person where Id != {list[0]} And Id != {list[1]} And Id != {list[2]} And Id != {list[3]} And Id != {list[4]} And Id != {list[5]} And Id != {list[6]}  And Id != {list[7]}" :
+                (list.Count == 9) ? $"select * from Person where Id != {list[0]} And Id != {list[1]} And Id != {list[2]} And Id != {list[3]} And Id != {list[4]} And Id != {list[5]} And Id != {list[6]}  And Id != {list[7]} And Id != {list[8]}" : "";
 
             SqlDataAdapter adapter = new SqlDataAdapter(query, con);
             using (adapter)
@@ -112,12 +113,14 @@ namespace WerZahltWas
             if ((ComboBox)sender == bezahlterComboBox)
             {
                 list.Add((int)bezahlterComboBox.SelectedValue);
+                beguenstigter2.ItemsSource = ""; beguenstigter3.ItemsSource = ""; beguenstigter4.ItemsSource = ""; beguenstigter5.ItemsSource = ""; beguenstigter6.ItemsSource = ""; beguenstigter7.ItemsSource = ""; beguenstigter8.ItemsSource = "";
                 FillBeguenstigter(list, beguenstigter1);
             }
             if ((ComboBox)sender == beguenstigter1 && beguenstigter1.SelectedValue != null)
             {
                 list.Add((int)beguenstigter1.SelectedValue);
                 list.Add((int)bezahlterComboBox.SelectedValue);
+                beguenstigter3.ItemsSource = ""; beguenstigter4.ItemsSource = ""; beguenstigter5.ItemsSource = ""; beguenstigter6.ItemsSource = ""; beguenstigter7.ItemsSource = ""; beguenstigter8.ItemsSource = "";
                 FillBeguenstigter(list, beguenstigter2);
             }
             if ((ComboBox)sender == beguenstigter2 && beguenstigter2.SelectedValue != null)
@@ -125,6 +128,7 @@ namespace WerZahltWas
                 list.Add((int)bezahlterComboBox.SelectedValue);
                 list.Add((int)beguenstigter1.SelectedValue);
                 list.Add((int)beguenstigter2.SelectedValue);
+                beguenstigter4.ItemsSource = ""; beguenstigter5.ItemsSource = ""; beguenstigter6.ItemsSource = ""; beguenstigter7.ItemsSource = ""; beguenstigter8.ItemsSource = "";
                 FillBeguenstigter(list, beguenstigter3);
             }
             if ((ComboBox)sender == beguenstigter3 && beguenstigter3.SelectedValue != null) 
@@ -133,6 +137,7 @@ namespace WerZahltWas
                 list.Add((int)beguenstigter1.SelectedValue);
                 list.Add((int)beguenstigter2.SelectedValue);
                 list.Add((int)beguenstigter3.SelectedValue);
+                beguenstigter5.ItemsSource = ""; beguenstigter6.ItemsSource = ""; beguenstigter7.ItemsSource = ""; beguenstigter8.ItemsSource = "";
                 FillBeguenstigter(list, beguenstigter4);
             }
             if ((ComboBox)sender == beguenstigter4 && beguenstigter4.SelectedValue != null)
@@ -142,6 +147,7 @@ namespace WerZahltWas
                 list.Add((int)beguenstigter2.SelectedValue);
                 list.Add((int)beguenstigter3.SelectedValue);
                 list.Add((int)beguenstigter4.SelectedValue);
+                beguenstigter6.ItemsSource = ""; beguenstigter7.ItemsSource = ""; beguenstigter8.ItemsSource = "";
                 FillBeguenstigter(list, beguenstigter5);
             }
             if ((ComboBox)sender == beguenstigter5 && beguenstigter5.SelectedValue != null)
@@ -152,6 +158,7 @@ namespace WerZahltWas
                 list.Add((int)beguenstigter3.SelectedValue);
                 list.Add((int)beguenstigter4.SelectedValue);
                 list.Add((int)beguenstigter5.SelectedValue);
+                beguenstigter7.ItemsSource = ""; beguenstigter8.ItemsSource = "";
                 FillBeguenstigter(list, beguenstigter6);
             }
             if ((ComboBox)sender == beguenstigter6 && beguenstigter6.SelectedValue != null)
@@ -163,6 +170,7 @@ namespace WerZahltWas
                 list.Add((int)beguenstigter4.SelectedValue);
                 list.Add((int)beguenstigter5.SelectedValue);
                 list.Add((int)beguenstigter6.SelectedValue);
+                beguenstigter8.ItemsSource = "";
                 FillBeguenstigter(list, beguenstigter7);
             }
             if ((ComboBox)sender == beguenstigter7 && beguenstigter7.SelectedValue != null)
@@ -255,7 +263,7 @@ namespace WerZahltWas
                     }
                 }
             }
-            MessageBox.Show((check[0] == 0)? "please check your entries" : "the entries are correct and will be registered");
+            MessageBox.Show((check[0] == 0) ? "please check your entries" : "the entries are correct and will be registered");
             if(check[0] == 1)
             {
                 this.Close();
@@ -306,7 +314,7 @@ namespace WerZahltWas
                 for (int i = 2; i < check[1]+2; i++)
                 {
                     beguenstigteList += (i == (check[1]+1))? $"{check[i]}" : $"{check[i]};";
-                }
+                }            
                 cmd.Parameters.AddWithValue("@beguenstigteList", beguenstigteList);
                 cmd.Parameters.AddWithValue("@betrag", anteileList[0]);
                 cmd.Parameters.AddWithValue("@bezeichnung", bezeichnungTextBox.Text);
@@ -590,8 +598,9 @@ namespace WerZahltWas
         }
         private void OpenMainWindow(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-            Application.Current.Shutdown();
+            MainWindow mainWindow = new MainWindow();
+            this.Hide();
+            mainWindow.ShowDialog();
         }
     }
 }
